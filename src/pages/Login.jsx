@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Loading from './Loading';
 import { createUser } from '../services/userAPI';
 
 class Login extends React.Component {
@@ -8,15 +9,19 @@ class Login extends React.Component {
     this.state = {
       name: '',
       button: true,
+      loading: false,
     };
   }
 
-  onButtonClick = () => {
+  onButtonClick = async () => {
+    this.setState({ loading: true });
     const { name } = this.state;
-    createUser({ name });
+    const { history } = this.props;
     this.setState({
       button: true,
       name: '' });
+    await createUser({ name: `${name}` });
+    history.push('/search');
   }
 
   onInputChange = ({ target }) => {
@@ -32,35 +37,47 @@ class Login extends React.Component {
   }
 
   render() {
-    const { name, button } = this.state;
+    const { name, button, loading } = this.state;
     return (
-      <Link to="/" data-testid="page-login">
-        <div>
-          Page Login:
-        </div>
-        <form>
-          <label htmlFor="page-login">
-            <input
-              type="text"
-              id="login"
-              data-testid="login-name-input"
-              placeholder="Write your name here"
-              name="name"
-              value={ name }
-              onChange={ this.onInputChange }
-            />
-          </label>
-          <button
-            type="submit"
-            data-testid="login-submit-button"
-            onClick={ this.onButtonClick }
-            disabled={ button }
-          >
-            Entrar
-          </button>
-        </form>
-      </Link>);
+      <div data-testid="page-login">
+
+        {loading
+          ? <Loading />
+          : (
+            <>
+              <p>
+                Page Login:
+              </p>
+              <form>
+                <label htmlFor="page-login">
+                  <input
+                    type="text"
+                    id="login"
+                    data-testid="login-name-input"
+                    placeholder="Write your name here"
+                    name="name"
+                    value={ name }
+                    onChange={ this.onInputChange }
+                  />
+                </label>
+                <button
+                  type="submit"
+                  data-testid="login-submit-button"
+                  onClick={ this.onButtonClick }
+                  disabled={ button }
+                >
+                  Entrar
+                </button>
+              </form>
+
+            </>)}
+      </div>);
   }
 }
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Login;
