@@ -5,9 +5,11 @@ import Content from './components/Content';
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
-        <Content />
-      </BrowserRouter>);
+      <div>
+        <BrowserRouter>
+          <Content />
+        </BrowserRouter>
+      </div>);
   }
 }
 
