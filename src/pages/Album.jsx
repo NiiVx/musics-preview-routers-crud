@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 
-class Album extends React.Component {
+export default class Album extends React.Component {
   render() {
-    return (<Link to="/album/:id" data-testid="page-album"><div>Page Album</div></Link>);
+    return (
+      <Link to="/album/:id" data-testid="page-album">
+        <Header />
+        <div>Page Album</div>
+      </Link>);
   }
 }
-
-export default Album;
