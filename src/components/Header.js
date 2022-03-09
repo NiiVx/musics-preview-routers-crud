@@ -31,16 +31,11 @@ export default class Header extends React.Component {
         {loading
           ? <Loading />
           : (
-
-            <>
-              <p data-testid="header-user-name">{userName}</p>
-              <p>
-                <Link to="/search" data-testid="link-to-search">Search</Link>
-                <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
-                <Link to="/profile" data-testid="link-to-profile">Profile</Link>
-              </p>
-            </>
+            <h1 data-testid="header-user-name">{`User: ${userName}!`}</h1>
           )}
+        <Link to="/search" data-testid="link-to-search">   -- Search  --  </Link>
+        <Link to="/favorites" data-testid="link-to-favorites"> Favorites-- </Link>
+        <Link to="/profile" data-testid="link-to-profile"> --Profile-- </Link>
       </header>
     );
   }
