@@ -33,7 +33,7 @@ export default class Album extends React.Component {
           <Header />
         </Link>
         <div>
-          Page Album
+          Page Album!
           {<p data-testid="artist-name">{nameArtist}</p>}
           {<p data-testid="album-name">{nameAlbum}</p>}
           <section>
