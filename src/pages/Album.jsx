@@ -29,9 +29,8 @@ export default class Album extends React.Component {
     const { musics, nameAlbum, nameArtist } = this.state;
     return (
       <div>
-        <Link to="/album/:id" data-testid="page-album">
-          <Header />
-        </Link>
+        <Header />
+        <Link to="/album/:id" data-testid="page-album" />
         <div>
           Page Album!
           {<p data-testid="artist-name">{nameArtist}</p>}
