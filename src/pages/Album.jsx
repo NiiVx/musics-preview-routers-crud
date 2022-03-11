@@ -28,8 +28,10 @@ export default class Album extends React.Component {
   render() {
     const { musics, nameAlbum, nameArtist } = this.state;
     return (
-      <Link to="/album/:id" data-testid="page-album">
-        <Header />
+      <div>
+        <Link to="/album/:id" data-testid="page-album">
+          <Header />
+        </Link>
         <div>
           Page Album
           {<p data-testid="artist-name">{nameArtist}</p>}
@@ -39,11 +41,15 @@ export default class Album extends React.Component {
               <MusicCard
                 key={ music.artistId }
                 trackName={ music.trackName }
-                previeUrl={ music.previeUrl }
+                previewUrl={ music.previewUrl }
               />
             ))}
           </section>
         </div>
-      </Link>);
+      </div>
+    );
   }
 }
+Album.propTypes = {
+  match: PropTypes.string.isRequired,
+};
