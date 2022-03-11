@@ -8,7 +8,7 @@ import Profile from '../pages/Profile';
 import ProfileEdit from '../pages/ProfileEdit';
 import NotFound from '../pages/NotFound';
 
-class Content extends React.Component {
+export default class Content extends React.Component {
   render() {
     return (
       <main>
@@ -25,5 +25,3 @@ class Content extends React.Component {
     );
   }
 }
-
-export default Content;
