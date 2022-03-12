@@ -1,0 +1,8 @@
+.parent {
+  border-color: #00f;
+  border-style: solid;
+  border-width: medium;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
