@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import { addSong } from '../services/favoriteSongsAPI';
 import MusicCard from '../components/MusicCard';
@@ -41,7 +40,6 @@ export default class Album extends React.Component {
     const { musics, nameAlbum, nameArtist, favoriteCheck } = this.state;
     return (
       <div>
-        <Header />
         <Link to="/album/:id" data-testid="page-album" />
         <div>
           Page Album!

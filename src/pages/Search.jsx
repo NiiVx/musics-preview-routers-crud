@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
-import Header from '../components/Header';
 import Loading from './Loading';
 
 class Search extends React.Component {
@@ -46,7 +45,6 @@ class Search extends React.Component {
     const { inputSearch, button, albums, loading, results } = this.state;
     return (
       <div data-testid="page-search">
-        <Header />
         {loading ? (
           <Loading />
         ) : (
