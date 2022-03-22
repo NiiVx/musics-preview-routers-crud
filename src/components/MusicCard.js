@@ -30,10 +30,9 @@ export default class MusicCard extends Component {
   }
 
   removeFavoriteMusic = async () => {
-    const { removeMusic, album } = this.props;
+    const { album } = this.props;
     this.setState({ loading: true });
     await removeSong(album);
-    if (typeof removeMusic === 'function') removeMusic(album);
     this.setState({ loading: false, check: false });
   }
 
