@@ -56,7 +56,7 @@ export default class MusicCard extends Component {
 
   render() {
     const { album: { trackName, previewUrl, trackId } } = this.props;
-    const { loading, check, favorites } = this.state;
+    const { loading, check } = this.state;
     return (
       <div>
         {loading
@@ -86,4 +86,10 @@ export default class MusicCard extends Component {
     );
   }
 }
-// aaaaaa
+MusicCard.propTypes = {
+  album: PropType.shape({
+    trackName: PropType.string,
+    previewUrl: PropType.string,
+    trackId: PropType.number,
+  }),
+}.isRequired;
