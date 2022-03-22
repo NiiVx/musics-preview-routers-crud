@@ -65,7 +65,7 @@ export default class Content extends React.Component {
             path="/"
             render={ (props) => (<Login
               { ...props }
-              button={ buttonOn }
+              buttonOn={ buttonOn }
               inputName={ inputName }
               onLoginInputChange={ this.onLoginInputChange }
               onLoginButtonClick={ this.onLoginButtonClick }
