@@ -1,17 +1,19 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
+import Header from '../components/Header';
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
+export default class Search extends React.Component {
+  constructor() {
+    super();
     this.state = {
-      inputSearch: '',
       button: true,
+      inputSearch: '',
       loading: false,
-      albums: [],
       results: '',
+      albums: [],
     };
   }
 
@@ -42,9 +44,16 @@ class Search extends React.Component {
   }
 
   render() {
-    const { inputSearch, button, albums, loading, results } = this.state;
+    const {
+      inputSearch,
+      button,
+      albums,
+      loading,
+      results,
+    } = this.state;
     return (
       <div data-testid="page-search">
+        <Header />
         {loading ? (
           <Loading />
         ) : (
@@ -100,5 +109,11 @@ class Search extends React.Component {
     );
   }
 }
-
-export default Search;
+Search.propTypes = {
+  albums: propTypes.arrayOf(),
+  searchAlbum: propTypes.func,
+  button: propTypes.bool,
+  loading: propTypes.bool,
+  onInputChange: propTypes.func,
+  inputSearch: propTypes.string,
+}.isRequired;
