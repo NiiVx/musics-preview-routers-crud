@@ -17,10 +17,6 @@ class Profile extends Component {
     this.getUserFromApi();
   }
 
-  componentWillUnmount() {
-    this.getUserFromApi();
-  }
-
   getUserFromApi = () => {
     this.setState({ loading: true }, async () => {
       const user = await getUser();
@@ -29,20 +25,20 @@ class Profile extends Component {
   }
 
   render() {
-    const { loading, userInfo: { description, email, image, name } } = this.state;
-
+    const { loading, userInfo } = this.state;
     return (
       <div data-testid="page-profile">
         <Header />
         {loading ? <Loading /> : (
           <section>
-            <h2>Nome</h2>
-            <p>{name}</p>
-            <h2>Email</h2>
-            <p>{email}</p>
-            <h2>Descrição</h2>
-            <p>{description}</p>
-            <img data-testid="profile-image" src={ image } alt={ name } />
+            {`${userInfo.name}`}
+            <p>{userInfo.email}</p>
+            <p>{userInfo.description}</p>
+            <img
+              data-testid="profile-image"
+              src={ userInfo.image }
+              alt={ userInfo.name }
+            />
             <Link to="/profile/edit">Editar perfil</Link>
           </section>
         )}
