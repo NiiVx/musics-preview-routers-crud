@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropType from 'prop-types';
-import { addSong, removeSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
 
 export default class MusicCard extends Component {
@@ -9,18 +9,27 @@ export default class MusicCard extends Component {
     this.state = {
       loading: false,
       check: false,
+      favorites: [],
     };
   }
 
-  // componentDidMount() {
-  //   this.handleFavoritesMusics();
-  // }
+  componentDidMount() {
+    this.handleFavoriteMusics();
+  }
 
-  // handleFavoritesMusics = async () => {
-  //  this.setState({ loading: true });
-  //  const musicsSaved = await getFavoriteSongs();
-  //  this.setState({ loading: false });
-  // }
+  handleFavoriteMusics = async () => {
+    this.setState({ loading: true });
+    const test = await getFavoriteSongs();
+    this.setState({ loading: false, favorites: test });
+    const { favorites } = this.state;
+    const { album: { trackName } } = this.props;
+    const isFavorite = favorites.find((music) => (
+      music.trackName === trackName
+    ));
+    if (isFavorite) {
+      this.setState({ check: true });
+    }
+  }
 
   addFavoriteSong = async () => {
     this.setState({ loading: true });
@@ -47,7 +56,7 @@ export default class MusicCard extends Component {
 
   render() {
     const { album: { trackName, previewUrl, trackId } } = this.props;
-    const { loading, check } = this.state;
+    const { loading, check, favorites } = this.state;
     return (
       <div>
         {loading
@@ -77,11 +86,3 @@ export default class MusicCard extends Component {
     );
   }
 }
-
-MusicCard.propTypes = {
-  album: PropType.shape({
-    trackName: PropType.string,
-    previewUrl: PropType.string,
-    trackId: PropType.number,
-  }),
-}.isRequired;
