@@ -39,7 +39,7 @@ class Login extends React.Component {
   render() {
     const { name, button, loading } = this.state;
     return (
-      <div className="login-page-container" data-testid="page-login">
+      <div className="container" data-testid="page-login">
 
         {loading
           ? <Loading />

@@ -3,14 +3,12 @@ html {
 }
 
 body {
-  /* Remember to use the other versions for IE 10 and older browsers! */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100%;
-  font-family: 'lato', sans-serif;
-  color: #fff;
-  background: #222222;
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
   }
   .login-page-container{
     background:rgba(58,63,68,0.5);
