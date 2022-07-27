@@ -7,7 +7,7 @@ Neste projeto foi implementado uma aplicação capaz de reproduzir músicas das 
 - ReactJs (SPA)
 - Routers
 
-# Exemplo da aplicação
+# Exemplo da minha aplicação
 
 <a href="https://niivx.github.io/musics-preview-routers-crud/">musics preview</a>
 
