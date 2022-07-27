@@ -1,4 +1,5 @@
 {
+  "homepage": "https://niivx.github.io/musics-preview-routers-crud",
   "name": "trybetunes",
   "version": "0.1.0",
   "private": true,
@@ -32,7 +33,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://niivx.github.io/musics-preview-routers-crud",
+ 
 
   "browserslist": {
     "production": [
