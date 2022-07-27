@@ -39,36 +39,39 @@ class Login extends React.Component {
   render() {
     const { name, button, loading } = this.state;
     return (
-      <div data-testid="page-login">
+      <div className="login-page-container" data-testid="page-login">
 
         {loading
           ? <Loading />
           : (
             <>
-              <p>
+              <p className="login-logo">
                 Page Login:
               </p>
-              <form>
-                <label htmlFor="page-login">
-                  <input
-                    type="text"
-                    id="login"
-                    data-testid="login-name-input"
-                    placeholder="Write your name here"
-                    name="name"
-                    value={ name }
-                    onChange={ this.onInputChange }
-                  />
-                </label>
-                <button
-                  type="submit"
-                  data-testid="login-submit-button"
-                  onClick={ this.onButtonClick }
-                  disabled={ button }
-                >
-                  Entrar
-                </button>
-              </form>
+              <div className="login-items-container">
+                <form className="form-login-container">
+                  <label htmlFor="page-login">
+                    <input
+                      className="input-name-login-container"
+                      type="text"
+                      id="login"
+                      data-testid="login-name-input"
+                      placeholder="Write your name here"
+                      name="name"
+                      value={ name }
+                      onChange={ this.onInputChange }
+                    />
+                  </label>
+                  <button
+                    type="submit"
+                    data-testid="login-submit-button"
+                    onClick={ this.onButtonClick }
+                    disabled={ button }
+                  >
+                    Entrar
+                  </button>
+                </form>
+              </div>
 
             </>)}
       </div>);

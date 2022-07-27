@@ -31,7 +31,7 @@ export default class Header extends React.Component {
   render() {
     const { userName, loading } = this.state;
     return (
-      <header data-testid="header-component">
+      <header data-testid="header-component" className="header-container">
         {loading
           ? <Loading />
           : (

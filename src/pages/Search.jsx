@@ -52,7 +52,7 @@ export default class Search extends React.Component {
       results,
     } = this.state;
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="login-page-container">
         <Header />
         {loading ? (
           <Loading />
