@@ -16,6 +16,9 @@ function Header() {
   }
   useEffect(() => {
     getUserName();
+    return () => {
+      getUserName();
+    };
   }, []);
 
   return (
