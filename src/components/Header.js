@@ -1,48 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from '../pages/Loading';
 
-export default class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: '',
-      loading: false,
-    };
-  }
+function Header() {
+  const [userName, setUserName] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  componentDidMount() {
-    this.getUserName();
+  async function getUserName() {
+    setLoading(true);
+    const user = await getUser();
+    const { name } = user;
+    setUserName(name);
+    setLoading(false);
   }
+  useEffect(() => {
+    getUserName();
+  }, []);
 
-  componentWillUnmount() {
-    this.getUserName();
-  }
-
-  async getUserName() {
-    this.setState({ loading: true }, async () => {
-      const user = await getUser();
-      const { name } = user;
-      this.setState({ userName: name, loading: false });
-    });
-  }
-
-  render() {
-    const { userName, loading } = this.state;
-    return (
-      <header data-testid="header-component" className="header-container">
-        {loading
-          ? <Loading />
-          : (
-            <h1 data-testid="header-user-name">{`User: ${userName}!`}</h1>
-          )}
-        <nav>
-          <Link to="/search" data-testid="link-to-search">   -- Search  --  </Link>
-          <Link to="/favorites" data-testid="link-to-favorites"> Favorites-- </Link>
-          <Link to="/profile" data-testid="link-to-profile"> --Profile-- </Link>
-        </nav>
-      </header>
-    );
-  }
+  return (
+    <header data-testid="header-component" className="header-container">
+      {loading
+        ? <Loading />
+        : (
+          <h1 data-testid="header-user-name">{`User: ${userName}!`}</h1>
+        )}
+      <nav>
+        <Link to="/search" data-testid="link-to-search">   -- Search  --  </Link>
+        <Link to="/favorites" data-testid="link-to-favorites"> Favorites-- </Link>
+        <Link to="/profile" data-testid="link-to-profile"> --Profile-- </Link>
+      </nav>
+    </header>
+  );
 }
+export default Header;

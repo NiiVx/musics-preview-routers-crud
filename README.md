@@ -4,7 +4,7 @@ Neste projeto foi implementado uma aplicação capaz de reproduzir músicas das 
 
 # Tecnologias utilizadas
 
-- ReactJs
+- ReactJs (SPA)
 - Routers
 
 # Exemplo da aplicação
