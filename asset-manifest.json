@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/musics-preview-routers-crud/static/css/main.5277ebbc.chunk.css",
+    "main.js": "/musics-preview-routers-crud/static/js/main.97fcd56b.chunk.js",
+    "main.js.map": "/musics-preview-routers-crud/static/js/main.97fcd56b.chunk.js.map",
+    "runtime-main.js": "/musics-preview-routers-crud/static/js/runtime-main.0d0b1f2f.js",
+    "runtime-main.js.map": "/musics-preview-routers-crud/static/js/runtime-main.0d0b1f2f.js.map",
+    "static/js/2.642c7653.chunk.js": "/musics-preview-routers-crud/static/js/2.642c7653.chunk.js",
+    "static/js/2.642c7653.chunk.js.map": "/musics-preview-routers-crud/static/js/2.642c7653.chunk.js.map",
+    "index.html": "/musics-preview-routers-crud/index.html",
+    "static/css/main.5277ebbc.chunk.css.map": "/musics-preview-routers-crud/static/css/main.5277ebbc.chunk.css.map",
+    "static/js/2.642c7653.chunk.js.LICENSE.txt": "/musics-preview-routers-crud/static/js/2.642c7653.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0d0b1f2f.js",
+    "static/js/2.642c7653.chunk.js",
+    "static/css/main.5277ebbc.chunk.css",
+    "static/js/main.97fcd56b.chunk.js"
+  ]
+}
