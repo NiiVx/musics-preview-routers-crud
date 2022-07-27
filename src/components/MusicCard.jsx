@@ -86,3 +86,5 @@ MusicCard.propTypes = {
     trackId: PropType.number,
   }),
 }.isRequired;
+
+export default MusicCard;
