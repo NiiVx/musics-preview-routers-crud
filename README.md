@@ -14,5 +14,6 @@ Neste projeto foi implementado uma aplicação capaz de reproduzir músicas das 
 # Como rodar na sua máquina
 
 - Clone o projeto
+- Entre na pasta do projeto cd /musics-preview-routers-crud
 - Rode npm install para instalar as dependências
 - Rode npm start para iniciar a aplicação no seu navegador
