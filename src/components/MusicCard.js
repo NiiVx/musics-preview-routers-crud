@@ -1,91 +1,83 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropType from 'prop-types';
 import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
 
-export default class MusicCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      check: false,
-      favorites: [],
-    };
-  }
-
-  componentDidMount() {
-    this.handleFavoriteMusics();
-  }
+function MusicCard(props) {
+  const [loading, setLoading] = useState(false);
+  const [check, setCheck] = useState(false);
+  const [favorites, setFavorites] = useState([]);
+  useEffect(() => {
+    handleFavoriteMusics();
+  }, []);
 
   handleFavoriteMusics = async () => {
-    this.setState({ loading: true });
-    const test = await getFavoriteSongs();
-    this.setState({ loading: false, favorites: test });
-    const { favorites } = this.state;
-    const { album: { trackName } } = this.props;
+    setLoading(true);
+    const favoriteSongs = await getFavoriteSongs();
+    setFavorites(favoriteSongs);
+    setLoading(false);
+    const { album: { trackName } } = props;
     const isFavorite = favorites.find((music) => (
       music.trackName === trackName
     ));
     if (isFavorite) {
-      this.setState({ check: true });
+      setCheck(true);
     }
-  }
+  };
 
   addFavoriteSong = async () => {
-    this.setState({ loading: true });
-    const { album } = this.props;
+    setLoading(true);
+    const { album } = props;
     await addSong(album);
-    this.setState({ loading: false, check: true });
-  }
+    setCheck(true);
+    setLoading(false);
+  };
 
   removeFavoriteMusic = async () => {
-    const { album, removeMusic } = this.props;
-    this.setState({ loading: true });
+    const { album, removeMusic } = props;
+    setLoading(true);
     await removeSong(album);
     if (typeof removeMusic === 'function') removeMusic(album);
-    this.setState({ loading: false, check: false });
-  }
+    setLoading(false);
+    setCheck(false);
+  };
 
   handleChange = (event) => {
     const { target: { checked } } = event;
     if (checked) {
-      this.addFavoriteSong();
+      addFavoriteSong();
     } else {
-      this.removeFavoriteMusic();
+      removeFavoriteMusic();
     }
-  }
+  };
 
-  render() {
-    const { album: { trackName, previewUrl, trackId } } = this.props;
-    const { loading, check } = this.state;
-    return (
-      <div>
-        {loading
-          ? <Loading />
-          : (
-            <section>
-              <h4>{trackName}</h4>
-              <audio data-testid="audio-component" src={ previewUrl } controls>
-                <track kind="captions" />
-              </audio>
-              <label htmlFor="favorites">
-                Favorita
-                <input
-                  id="favorites"
-                  type="checkbox"
-                  checked={ check }
-                  data-testid={ `checkbox-music-${trackId}` }
-                  onChange={
-                    (event) => { this.handleChange(event); }
-                  }
-                />
-              </label>
-            </section>
-          )}
-      </div>
+  return (
+    <div>
+      {loading
+        ? <Loading />
+        : (
+          <section>
+            <h4>{trackName}</h4>
+            <audio data-testid="audio-component" src={ previewUrl } controls>
+              <track kind="captions" />
+            </audio>
+            <label htmlFor="favorites">
+              Favorita
+              <input
+                id="favorites"
+                type="checkbox"
+                checked={ check }
+                data-testid={ `checkbox-music-${trackId}` }
+                onChange={
+                  (event) => { handleChange(event); }
+                }
+              />
+            </label>
+          </section>
+        )}
+    </div>
 
-    );
-  }
+  );
 }
 MusicCard.propTypes = {
   album: PropType.shape({
