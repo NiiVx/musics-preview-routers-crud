@@ -1,15 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
+import { createUser } from '../services/userAPI';
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      button: true,
+      loading: false,
+    };
+  }
+
+  onButtonClick = async () => {
+    this.setState({ loading: true });
+    const { name } = this.state;
+    const { history } = this.props;
+    this.setState({
+      button: true,
+      name: '' });
+    await createUser({ name: `${name}` });
+    history.push('/search');
+  }
+
+  onInputChange = ({ target }) => {
+    const { name, value } = target;
+    const MIN = 3;
+    this.setState({
+      [name]: value,
+    }, () => {
+      if (value.length >= MIN) {
+        this.setState({ button: false });
+      }
+    });
+  }
+
   render() {
-    const {
-      inputName,
-      buttonOn,
-      loading,
-      onLoginInputChange,
-      onLoginButtonClick } = this.props;
+    const { name, button, loading } = this.state;
     return (
       <div data-testid="page-login">
 
@@ -21,19 +49,22 @@ class Login extends React.Component {
                 Page Login:
               </p>
               <form>
-                <input
-                  type="text"
-                  data-testid="login-name-input"
-                  placeholder="Write your name here"
-                  value={ inputName }
-                  name="inputName"
-                  onChange={ onLoginInputChange }
-                />
+                <label htmlFor="page-login">
+                  <input
+                    type="text"
+                    id="login"
+                    data-testid="login-name-input"
+                    placeholder="Write your name here"
+                    name="name"
+                    value={ name }
+                    onChange={ this.onInputChange }
+                  />
+                </label>
                 <button
                   type="submit"
-                  disabled={ buttonOn }
                   data-testid="login-submit-button"
-                  onClick={ onLoginButtonClick }
+                  onClick={ this.onButtonClick }
+                  disabled={ button }
                 >
                   Entrar
                 </button>
@@ -44,11 +75,9 @@ class Login extends React.Component {
   }
 }
 Login.propTypes = {
-  onLoginInputChange: PropTypes.func,
-  onLoginButtonClick: PropTypes.func,
-  inputName: PropTypes.string,
-  button: PropTypes.bool,
-  loading: PropTypes.bool,
-}.isRequired;
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Login;

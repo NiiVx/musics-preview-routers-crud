@@ -27,6 +27,7 @@ export default class Favorites extends React.Component {
   handleFavoriteMusics = async () => {
     this.setState({ loading: true });
     const test = await getFavoriteSongs();
+    console.log(test);
     this.setState({ loading: false, favorites: test });
   }
 

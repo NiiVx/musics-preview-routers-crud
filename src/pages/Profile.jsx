@@ -8,7 +8,7 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      userInfo: [],
+      userInfo: {},
       loading: false,
     };
   }
@@ -26,18 +26,19 @@ class Profile extends Component {
 
   render() {
     const { loading, userInfo } = this.state;
+
     return (
       <div data-testid="page-profile">
         <Header />
         {loading ? <Loading /> : (
           <section>
-            {`${userInfo.name}`}
+            <p>{userInfo.name}</p>
             <p>{userInfo.email}</p>
             <p>{userInfo.description}</p>
             <img
               data-testid="profile-image"
               src={ userInfo.image }
-              alt={ userInfo.name }
+              alt={ userInfo.image }
             />
             <Link to="/profile/edit">Editar perfil</Link>
           </section>
