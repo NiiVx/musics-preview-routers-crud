@@ -4,7 +4,7 @@ export default class Loading extends React.Component {
   render() {
     return (
       <div data-testid="page-loading">
-        <p>Carregando...</p>
+        <h2>Carregando...</h2>
       </div>
     );
   }

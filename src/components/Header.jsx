@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from '../pages/Loading';
+import { Container, Title } from '../styles/Header';
 
 function Header() {
   const [userName, setUserName] = useState('');
@@ -22,18 +23,18 @@ function Header() {
   }, []);
 
   return (
-    <header data-testid="header-component" className="header-container">
+    <Container data-testid="header-component">
       {loading
         ? <Loading />
         : (
-          <h1 data-testid="header-user-name">{`User: ${userName}!`}</h1>
+          <Title data-testid="header-user-name">{`${userName}`}</Title>
         )}
       <nav>
-        <Link to="/search" data-testid="link-to-search">   -- Search  --  </Link>
-        <Link to="/favorites" data-testid="link-to-favorites"> Favorites-- </Link>
-        <Link to="/profile" data-testid="link-to-profile"> --Profile-- </Link>
+        <Link to="/search" data-testid="link-to-search">Search</Link>
+        <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
+        <Link to="/profile" data-testid="link-to-profile">Profile</Link>
       </nav>
-    </header>
+    </Container>
   );
 }
 export default Header;

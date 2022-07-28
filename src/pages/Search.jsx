@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
 import Header from '../components/Header';
+import { Container } from '../styles/Login';
 
 export default class Search extends React.Component {
   constructor() {
@@ -57,12 +58,10 @@ export default class Search extends React.Component {
         {loading ? (
           <Loading />
         ) : (
-          <div>
-            {albums.length > 0 ? (
-              <p>{`Resultado de álbuns de: ${results}`}</p>
-            ) : (
-              <p>Nenhum álbum foi encontrado</p>
-            )}
+          <Container>
+
+            {albums.length > 0
+            && <p>{`Resultado de álbuns de: ${results}`}</p>}
             <form>
               <input
                 type="text"
@@ -102,7 +101,7 @@ export default class Search extends React.Component {
                     </div>
                   </div>))}
             </form>
-          </div>
+          </Container>
         )}
       </div>
     );
