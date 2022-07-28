@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/musics-preview-routers-crud/static/css/main.b173fc2a.chunk.css",
-    "main.js": "/musics-preview-routers-crud/static/js/main.c2dce172.chunk.js",
-    "main.js.map": "/musics-preview-routers-crud/static/js/main.c2dce172.chunk.js.map",
+    "main.css": "/musics-preview-routers-crud/static/css/main.8b60ad1f.chunk.css",
+    "main.js": "/musics-preview-routers-crud/static/js/main.eb20ee5b.chunk.js",
+    "main.js.map": "/musics-preview-routers-crud/static/js/main.eb20ee5b.chunk.js.map",
     "runtime-main.js": "/musics-preview-routers-crud/static/js/runtime-main.c205d994.js",
     "runtime-main.js.map": "/musics-preview-routers-crud/static/js/runtime-main.c205d994.js.map",
-    "static/js/2.dab51d68.chunk.js": "/musics-preview-routers-crud/static/js/2.dab51d68.chunk.js",
-    "static/js/2.dab51d68.chunk.js.map": "/musics-preview-routers-crud/static/js/2.dab51d68.chunk.js.map",
+    "static/js/2.1656070f.chunk.js": "/musics-preview-routers-crud/static/js/2.1656070f.chunk.js",
+    "static/js/2.1656070f.chunk.js.map": "/musics-preview-routers-crud/static/js/2.1656070f.chunk.js.map",
     "index.html": "/musics-preview-routers-crud/index.html",
-    "static/css/main.b173fc2a.chunk.css.map": "/musics-preview-routers-crud/static/css/main.b173fc2a.chunk.css.map",
-    "static/js/2.dab51d68.chunk.js.LICENSE.txt": "/musics-preview-routers-crud/static/js/2.dab51d68.chunk.js.LICENSE.txt"
+    "static/css/main.8b60ad1f.chunk.css.map": "/musics-preview-routers-crud/static/css/main.8b60ad1f.chunk.css.map",
+    "static/js/2.1656070f.chunk.js.LICENSE.txt": "/musics-preview-routers-crud/static/js/2.1656070f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c205d994.js",
-    "static/js/2.dab51d68.chunk.js",
-    "static/css/main.b173fc2a.chunk.css",
-    "static/js/main.c2dce172.chunk.js"
+    "static/js/2.1656070f.chunk.js",
+    "static/css/main.8b60ad1f.chunk.css",
+    "static/js/main.eb20ee5b.chunk.js"
   ]
 }
